@@ -1,0 +1,22 @@
+﻿@model IEnumerable<BunchofBrackets.BL.User>
+
+@{
+    ViewBag.Title = "Get";
+}
+
+<h2>Get</h2>
+
+<table class="table">
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.ActionLink("View Profile", "Detail", new { id = item.Id }) 
+        </td>
+    </tr>
+}
+
+</table>

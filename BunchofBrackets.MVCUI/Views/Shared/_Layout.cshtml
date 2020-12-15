@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - BRACK IT</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/stylesheet.css" rel='stylesheet' />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+
+    <script>
+        var mini = true;
+
+        function toggleSidenav() {
+            if (mini) {
+                console.log("opening sidenav");
+                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("side").style.marginLeft = "250px";
+                this.mini = false;
+            } else {
+                console.log("closing sidenav");
+                document.getElementById("mySidenav").style.width = "85px";
+                document.getElementById("side").style.marginLeft = "85px";
+                this.mini = true;
+            }
+        }
+    </script>
+
+    <script>
+    </script>
+</head>
+<body>
+
+      <div class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+              <div class="navbar-header">
+              </div>
+
+              <!--<div class="flexboxx">
+                  <div class="search">
+                      <div>
+                              <input type="text" placeholder="Search . . ." required>
+                      </div>
+                  </div>
+              </div>-->
+
+              <div class="profileImage" style="position: absolute; top: 15px; right: 0px;">
+                  <a href="@Url.Action("Detail", null, new { id = Guid.Empty, area = string.Empty, controller = "User" }, Request.Url.Scheme)"><span><i class="material-icons" style="font-size:35px;">account_circle</i></span></a>
+              </div>
+
+
+              <div class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav">
+                      <!--<li>@Html.ActionLink("Home", "Index", "Home")</li>
+                  <li>@Html.ActionLink("Create Bracket", "Create", "Bracket")</li>
+                  <li>@Html.ActionLink("Browse Brackets", "Index", "Bracket")</li>
+                  <li>@Html.ActionLink("About", "About", "Home")</li>
+                  <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                  <li><input type="text" placeholder="Search.." /></li>-->
+                  </ul>
+              </div>
+          </div>
+      </div> 
+
+    <div id="side" style="font-family:'Abel', sans-serif;">
+        <div id="mySidenav" class="sidenav" onmouseover="toggleSidenav()" onmouseout="toggleSidenav()">
+            <a href="@Url.Action("Index", null, new { area = string.Empty, controller = "Home" }, Request.Url.Scheme)"><img class="logo" src="~/images/LogoB.png" /><span class="icon-text">HOME</span></a>
+
+            <a href="@Url.Action("Detail", "User", new { @id = Guid.Empty})"><span><i class="material-icons">account_circle</i><span class="icon-text"></span>PROFILE</span></a><br>
+
+            <a href="@Url.Action("Create", null, new { area = string.Empty, controller = "Bracket" }, Request.Url.Scheme)"><span><i class="material-icons">add_circle</i><span class="icon-text"></span>CREATE</span></a><br>
+
+            <a href="@Url.Action("About", null, new { area = string.Empty, controller = "Home" }, Request.Url.Scheme)"><span><i class="material-icons">info</i><span class="icon-text"></span>ABOUT</span></a><br>
+
+            <a href="@Url.Action("Contact", null, new { area = string.Empty, controller = "Home" }, Request.Url.Scheme)"><span><i class="material-icons">email</i><span class="icon-text"></span>CONTACT</span></a><br />
+            <a href="@Url.Action("Index", "Search")"><span><i class="material-icons">search</i><span class="icon-text"></span>SEARCH</span></a>
+        </div>
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

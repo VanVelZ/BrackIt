@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[tblRelationship]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [SenderId] UNIQUEIDENTIFIER NOT NULL, 
+    [FriendId] UNIQUEIDENTIFIER NOT NULL, 
+    [FriendDate] DATETIME NOT NULL, 
+    [isFriend] BIT NOT NULL 
+)

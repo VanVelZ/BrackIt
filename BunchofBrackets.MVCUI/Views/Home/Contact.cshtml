@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<br />
+<head>
+
+</head>
+<body>
+    <header>
+    </header>
+    <center style="margin-top:50px;"><img src="~/images/Asset 10.png"/></center>
+    <form runat="server">
+        <br /> <br />
+        <div class="contactform">
+
+            <label for="fname">First Name</label><br />
+            <input type="text" id="fname" name="firstname" required="required" placeholder="Your name.." > <br /><br />
+
+            <label for="lname">Last Name</label><br />
+            <input type="text" id="lname" name="lastname" required="required" placeholder="Your last name.."><br /> <br />
+            <label for="lemail">Email</label><br />
+            <input type="text" id="lemail" name="email" required="required" placeholder="Your Email.."><br /><br />
+
+
+            <label for="subject">Subject</label><br />
+            <textarea id="subject" name="subject" rows="5" required="required" placeholder="We're happy to hear from you.." style="width:200px"></textarea><br /> <br />
+
+            <input type="submit" id="submit" value="Send" style="color:white">
+        </div>
+    </form>
+</body>

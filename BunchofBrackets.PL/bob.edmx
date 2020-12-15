@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BunchofBrackets.DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblBracket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModeratorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImageSource" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Game" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OriginalRoundCount" Type="int" Nullable="false" />
+          <Property Name="CurrentDivision" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFriend">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="User1Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="User2Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FriendDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMatch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Team1" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Team2" Type="uniqueidentifier" />
+          <Property Name="Outcome" Type="uniqueidentifier" />
+          <Property Name="BracketId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReportingPlayer" Type="uniqueidentifier" />
+          <Property Name="Round" Type="int" Nullable="false" />
+          <Property Name="Division" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblRelationship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SenderId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FriendId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FriendDate" Type="datetime" Nullable="false" />
+          <Property Name="isFriend" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ImageSource" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BunchofBracketsDBModelStoreContainer">
+          <EntitySet Name="tblBracket" EntityType="Self.tblBracket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFriend" EntityType="Self.tblFriend" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMatch" EntityType="Self.tblMatch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRelationship" EntityType="Self.tblRelationship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BunchofBrackets.DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BoBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblBrackets" EntityType="BunchofBrackets.DBModel.tblBracket" />
+          <EntitySet Name="tblFriends" EntityType="BunchofBrackets.DBModel.tblFriend" />
+          <EntitySet Name="tblMatches" EntityType="BunchofBrackets.DBModel.tblMatch" />
+          <EntitySet Name="tblRelationships" EntityType="BunchofBrackets.DBModel.tblRelationship" />
+          <EntitySet Name="tblUsers" EntityType="BunchofBrackets.DBModel.tblUser" />
+        </EntityContainer>
+        <EntityType Name="tblBracket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ModeratorId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageSource" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Game" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OriginalRoundCount" Type="Int32" Nullable="false" />
+          <Property Name="CurrentDivision" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFriend">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="User1Id" Type="Guid" Nullable="false" />
+          <Property Name="User2Id" Type="Guid" Nullable="false" />
+          <Property Name="FriendDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblMatch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Team1" Type="Guid" Nullable="false" />
+          <Property Name="Team2" Type="Guid" />
+          <Property Name="Outcome" Type="Guid" />
+          <Property Name="BracketId" Type="Guid" Nullable="false" />
+          <Property Name="ReportingPlayer" Type="Guid" />
+          <Property Name="Round" Type="Int32" Nullable="false" />
+          <Property Name="Division" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblRelationship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="SenderId" Type="Guid" Nullable="false" />
+          <Property Name="FriendId" Type="Guid" Nullable="false" />
+          <Property Name="FriendDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="isFriend" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ImageSource" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BunchofBracketsDBModelStoreContainer" CdmEntityContainer="BoBEntities">
+          <EntitySetMapping Name="tblBrackets">
+            <EntityTypeMapping TypeName="BunchofBrackets.DBModel.tblBracket">
+              <MappingFragment StoreEntitySet="tblBracket">
+                <ScalarProperty Name="CurrentDivision" ColumnName="CurrentDivision" />
+                <ScalarProperty Name="OriginalRoundCount" ColumnName="OriginalRoundCount" />
+                <ScalarProperty Name="Game" ColumnName="Game" />
+                <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ModeratorId" ColumnName="ModeratorId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFriends">
+            <EntityTypeMapping TypeName="BunchofBrackets.DBModel.tblFriend">
+              <MappingFragment StoreEntitySet="tblFriend">
+                <ScalarProperty Name="FriendDate" ColumnName="FriendDate" />
+                <ScalarProperty Name="User2Id" ColumnName="User2Id" />
+                <ScalarProperty Name="User1Id" ColumnName="User1Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMatches">
+            <EntityTypeMapping TypeName="BunchofBrackets.DBModel.tblMatch">
+              <MappingFragment StoreEntitySet="tblMatch">
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Round" ColumnName="Round" />
+                <ScalarProperty Name="ReportingPlayer" ColumnName="ReportingPlayer" />
+                <ScalarProperty Name="BracketId" ColumnName="BracketId" />
+                <ScalarProperty Name="Outcome" ColumnName="Outcome" />
+                <ScalarProperty Name="Team2" ColumnName="Team2" />
+                <ScalarProperty Name="Team1" ColumnName="Team1" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRelationships">
+            <EntityTypeMapping TypeName="BunchofBrackets.DBModel.tblRelationship">
+              <MappingFragment StoreEntitySet="tblRelationship">
+                <ScalarProperty Name="isFriend" ColumnName="isFriend" />
+                <ScalarProperty Name="FriendDate" ColumnName="FriendDate" />
+                <ScalarProperty Name="FriendId" ColumnName="FriendId" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="BunchofBrackets.DBModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

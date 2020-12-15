@@ -1,0 +1,13 @@
+﻿@model IEnumerable<BunchofBrackets.BL.Bracket>
+
+<div class="list">
+    <h3 class="listtitle">Brackets</h3>
+@foreach (var item in Model) {
+    <div class="listitem">
+        <div>
+            @Html.ActionLink(item.Name, "Details", new { id = item.Id })
+        </div>
+    </div>
+}
+
+</div>

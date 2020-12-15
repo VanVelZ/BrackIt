@@ -1,0 +1,76 @@
+﻿@model BunchofBrackets.BL.User
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center style="margin-top:50px; margin-bottom:15px;"><img src="~/images/Settings.png" /></center>
+
+
+@using (Html.BeginForm("Edit", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<center>
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+
+        <div class="form-group">
+            <!--@Html.LabelFor(model => model.ImageSource, htmlAttributes: new { @class = "control-label col-md-2" })-->
+            <div class="col-md-12">
+                <img src="~/Images/@Model.ImageSource" alt="@Model.Username" class="detailImage" /><br /><br />
+                <input type="file" name="File" id="File" accept="image/*" onchange="loadFile(event)" style="border-radius: 10px; margin-top: 20px;" />
+                @Html.ValidationMessageFor(model => model.ImageSource, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <!--@Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })-->
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = "First Name", style = "border-radius: 40px;" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <!--@Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })-->
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Last Name", style = "border-radius: 40px;" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <!--@Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })-->
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", placeholder = "Username", style = "border-radius: 40px;" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <input type="submit" value="Save" class="btn btn-default" style="border-radius:40px; background-color: transparent; border-color: #6591ae; width: 100px; color: #6591ae;" />
+            </div>
+        </div>
+    </div>
+</center>
+}
+
+<div>
+    @Html.ActionLink("Back to Profile", "Detail", "User", new { Id = Guid.Empty },  null )
+</div>
+<script>
+    var loadFile = function (event) {
+        var output = document.getElementById('userImage');
+        output.src = URL.createObjectURL(event.target.files[0])
+    }
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

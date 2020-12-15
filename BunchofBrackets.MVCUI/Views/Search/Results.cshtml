@@ -1,0 +1,24 @@
+﻿@model BunchofBrackets.MVCUI.ViewModels.SearchResults
+    <div class="col-md-6">
+        <div class="list">
+            <h3 class="listtitle">Users</h3>
+            @foreach (var item in Model.Users)
+            {
+                <div class="listitem">
+                    @Html.ActionLink(item.FullName, "Detail", "User", new { id = item.Id }, null)
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="list">
+            <h3 class="listtitle">Brackets</h3>
+            @foreach (var item in Model.Brackets)
+            {
+                <div class="listitem">
+                    @Html.ActionLink(item.Name, "Details", "Bracket", new { id = item.Id }, null)
+                </div>
+            }
+        </div>
+    </div>
+

@@ -1,0 +1,8 @@
+﻿BEGIN
+	INSERT INTO tblFriend(Id, User1Id, User2Id, FriendDate)
+	VALUES
+	(NEWID(), NEWID(), NEWID(),GETDATE()),
+	(NEWID(), NEWID(), NEWID(), GETDATE()),
+	(NEWID(), NEWID(), NEWID(), GETDATE()),
+	(NEWID(), NEWID(), NEWID(),GETDATE())
+END

@@ -1,0 +1,48 @@
+﻿@model BunchofBrackets.MVCUI.ViewModels.Profile
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<center style="margin-top:50px; margin-bottom:15px;"><img src="~/images/Profile1.png" /></center>
+<center><h2>@Html.DisplayFor(model => model.ProfileUser.FullName)</h2></center>
+<div class="col-md-3">
+    <center>
+        <img src="~/images/@Model.ProfileUser.ImageSource" class="detailImage" /> <br />
+    </center>
+</div>
+<div class="col-md-3">
+    <center>
+        @if (Model.LoggedInUser.Id == Model.ProfileUser.Id)
+        {
+            <div class="friends">@{Html.RenderAction("FriendList", "Friend");}</div>
+            <div class="friends">@{Html.RenderAction("LoadRequests", "Friend");}</div>
+
+        }
+        else
+        {
+            <button class="Button btnAddFriend"><span>@Html.ActionLink("+ Friend", "AddFriend", "Friend", Model.ProfileUser, null) </span></button>
+        }
+    </center>
+</div>
+<div class="col-md-3">
+    <center>
+        <div class="bracket">
+            @{Html.RenderAction("List", "Bracket", new { @id = Model.ProfileUser.Id });}
+        </div>
+    </center>
+</div>
+<div class="col-md-12">
+    <center>
+        @if (Model.LoggedInUser.Id == Model.ProfileUser.Id)
+        {
+            <button class="Button "><span>@Html.ActionLink("Settings", "Edit", "User", new { @id = Model.LoggedInUser.Id }, null) </span></button>
+            
+            <button class="Button "><span>@Html.ActionLink("Logout", "Logout", "User")</span></button>
+        }
+    </center>
+</div>
+
+

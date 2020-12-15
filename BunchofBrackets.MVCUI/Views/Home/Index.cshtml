@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    </style>
+</head>
+<body>
+    <header>
+    </header>
+
+
+
+    <div class="hero-image">
+        <div class="hero-text">
+            <img src="~/images/Asset 2.png" />
+            </br></br>
+            <p>A fight to the death.</p>
+            <p>...Or at least the winning team.</p>
+        </div>
+        <div class="flex-container">
+            <button class="ButtonHomeScreen"><span>@Html.ActionLink("sign up", "Create", "User") </span></button>
+            <button class="ButtonHomeScreen"><span>@Html.ActionLink("create", "Create", "Bracket")</span></button>
+        </div>
+    </div>
+
+    <center><h2 style="margin-top: 50px;">We know you're curious. Here's a brief look at some examples.</h2></center>
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <p style="text-align: center; ">Easy to create.</p>
+            <img class="exampleImg" src="~/Images/MicrosoftTeams-image.png" />
+        </div>
+        <div class="col-md-4">
+            <p style="text-align: center;">Straightfoward design.</p>
+            <img class="exampleImg" src="~/Images/MicrosoftTeams-image (1).png" />
+        </div>
+        <div class="col-md-4">
+            <p style="text-align: center;">Loads of fun!</p>
+            <img class="exampleImg" src="~/Images/MicrosoftTeams-image (2).png" />
+        </div>
+    </div>
+
+    <!-- <div class="AA">
+         <button class="Button">Create Bracket</button>
+     </div>
+     <div class="Button show-inline-block">
+         <button class="Button"><span>@Html.ActionLink("Sign Up", "Create", "User") </span></button>
+         <button class="Button"><span>@Html.ActionLink("Sign in", "Login", "User") </span></button>
+     </div>
+    -->
+</body>
